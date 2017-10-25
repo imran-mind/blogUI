@@ -1,0 +1,83 @@
+<!-- <div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<ol class = "breadcrumb">
+				<li><a routerLink= "/dashboard">Dashboard</a></li>
+				<li class = "active">Archived</li>
+			</ol>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="text-right">
+				<button class="btn btn-primary">Create Something</button>
+			</div>
+			<table class = "table table-bordered">
+				<thead>
+					<tr>
+						<th>S.No.</th>
+						<th>Name</th>
+						<th>CreatedAt</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr *ngFor="let archived of archivedList">
+						<td>{{archived.id}}</td>
+						<td><a routerLink="">{{archived.name}}</a></td>
+						<td>{{archived.createdAt}}</td>
+						<td>
+							<a href="" class="btn btn-danger">Delete</a>
+							<a href="" class="btn btn-primary">Edit</a>
+						</td>
+					</tr>
+
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+</div> -->
+
+
+
+<div class ="col-md-6">
+	<form #profileForm="ngForm" (ngSubmit)="formSubmit(profileForm.value)">
+		<span>{{fNameField.classList | json}}</span>
+		<div class="form-group">
+			<label>First Name:</label>			
+			<input type="text" #fNameField="ngModel" class="form-control" name="fName" 
+			[(ngModel)]="firstName" required>
+		</div>
+		<div [hidden] ="fNameField.valid" class="alert alert-danger">
+			First Name is required.
+		</div>
+		
+		<div class="form-group">
+			<label>sex</label>			
+			<input type="radio" class="form-control" value="male" name="sex" 
+			[(ngModel)]="sex">Male
+
+			<input type="radio" class="form-control" value="female" name="sex" 
+			[(ngModel)]="sex">Female
+		</div>
+		
+		<div ngModelGroup="address">
+		<div class="form-group">
+			<label>Address Line1:</label>			
+			<input type="text" class="form-control" name="address1" 
+			[(ngModel)]="address1">
+		</div>
+		<div class="form-group">
+			<label>Country</label>			
+			<select class="form-control" name="country" [(ngModel)]="country">
+				<option value="India">India</option>
+				<option value="UK">UK</option>
+				<option value="USA">USA</option>
+				<option value="Japan">Japan</option>
+			</select>
+			<input type="submit" class="btn btn-primary">
+		</div>
+	</div>
+</form>
+	<span>{{profileForm.value |json}}</span>
+</div>

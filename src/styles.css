@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+.container{min-height: 600px;}
+.table-scroll{max-height: 400px;overflow: auto;}
+.breadcrumb > li + li:before {
+    color: #CCCCCC;
+    content: "/ ";
+    padding: 0 5px;
+ }
+ .navbar-header[_ngcontent-c1] {
+	
+	margin: 0 auto;
+}
+.help-block{color: red;}
+   
+
+.col-md-offset-2{ margin-left: 16.66666667%;}
+.col-md-offset-3 {
+	margin-left: 25%;
+}

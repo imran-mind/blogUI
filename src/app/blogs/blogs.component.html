@@ -1,0 +1,46 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<ol class = "breadcrumb">
+				<li><a routerLink="/dashboard">Dashboard</a></li>
+				<li class = "active">Categories</li>
+			</ol>
+		</div>
+		
+		<div class="col-md-10 col-md-offset-1">
+			<div class="text-right">
+				<button class="btn btn-primary" [routerLink]="['/createBlog']">Create Blog</button>
+			</div>
+			<table class = "table table-bordered">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Title</th>
+						<th>SubTitle</th>
+						<th>Content</th>
+						<th>Created At</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr *ngFor="let blog of blogs">
+						
+						<td><a routerLink="">{{blog.name}}</a></td>
+						<td>{{blog.title}}</td>
+						<td>{{blog.subtitle}}</td>
+						<td>{{blog.content}}</td>
+						<td>{{blog.createdAt}}</td>
+						
+						<td>
+							<a href="" class="btn btn-danger">Delete</a>
+							<a href="" class="btn btn-primary">Edit</a>
+						</td>
+					</tr>
+
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+</div>

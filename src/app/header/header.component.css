@@ -1,0 +1,12 @@
+.navbar-primary{
+	background-color: #1976d2;
+	text-align: center;
+	color: white;
+	border-radius: 0;
+}
+
+.navbar-header {
+    float: none;
+    padding: 15px 0;
+}
+a.navbar-brand {text-align: center;float:none;color: #fff;}

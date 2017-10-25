@@ -1,0 +1,122 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 mt-8">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && register()" novalidate>
+
+        <div class="form-group col-md-12 ">
+          <label for="firstName">First Name</label>
+          <input type="text" #firstName="ngModel" minlength="2" maxlength="50" pattern="[a-zA-Z][a-zA-Z ]+" class="form-control" name="firstName"
+            [(ngModel)]='model.firstName' required/>
+          <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+            <div [hidden]="!firstName.errors.required">
+              please enter Fisrt Name
+            </div>
+            <div [hidden]="!firstName.errors.minlength">
+              please enter atleast 2 characters
+            </div>
+            <div [hidden]="!firstName.errors.pattern">
+              Only alphabets are allowed
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label>Last Name</label>
+          <input type="text" #lastName="ngModel" minlength="2" maxlength="50" pattern="[a-zA-Z][a-zA-Z ]+" class="form-control" name="lastName"
+            [(ngModel)]="model.lastName" required>
+
+          <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+            <div [hidden]="!lastName.errors.required">
+              please enter Last Name
+            </div>
+            <div [hidden]="!lastName.errors.minlength">
+              please enter atleast 2 characters
+            </div>
+            <div [hidden]="!lastName.errors.pattern">
+              Only alphabets are allowed
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label>Email</label>
+          <input type="text" #username="ngModel" class="form-control" maxlength="50" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+            name="username" [(ngModel)]="model.username" required>
+          <div *ngIf="username.errors && (username.dirty || username.touched)" class="alert alert-danger">
+            <div [hidden]="!username.errors.required">
+              please enter an Email
+            </div>
+            <div [hidden]="!username.errors.pattern">
+              Email format should be
+              <small>
+                <b>joe@abc.com</b>
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label>password</label>
+          <input type="password" #pwd="ngModel" minlength="2" maxlength="50" class="form-control" name="pwd" value="" [(ngModel)]="model.pwd"
+            required>
+          <div *ngIf="pwd.errors && (pwd.dirty || pwd.touched)" class="alert alert-danger">
+            <div [hidden]="!pwd.errors.required">
+              please enter a passwrod
+            </div>
+            <div [hidden]="!pwd.errors.minlength">
+              please enter atleast 2 characters
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button [disabled]="!f.form.valid" class="btn btn-primary">Signup</button>
+          <a [routerLink]="['/']">Cancle</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 mt-8">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && register()" novalidate>
+        <div class="form-group col-md-12 " [ngClass]="{'has-error':f.submitted && !username.valid}">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" [(ngModel)]='model.firstName' #firstName="ngModel" required/>
+          <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
+        </div>
+
+        <div class="form-group col-md-12" [ngClass]="{'has-error':f.submitted &&!username.valid}">
+          <label>Last Name</label>
+          <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required>
+          <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
+        </div>
+        
+        <div class="form-group col-md-12" [ngClass]="{'has-error':f.submitted &&!username.valid}"  >
+          <label>Username</label>
+          <input type="text" class="form-control" name="username"  [(ngModel)]="model.username" #username="ngModel" required  ng-reflect-hidden="false" hidden>
+          <div *ngIf="f.submitted && !username.valid" class="help-block">username is required</div>
+        </div>
+        
+        <div class="form-group col-md-12" [ngClass]="{'has-error':f.submitted &&!pwd.valid}">
+          <label>password</label>
+          <input type="password" class="form-control" name="pwd" value="" [(ngModel)]="model.pwd" #pwd="ngModel" required>
+          <div *ngIf="f.submitted && !pwd.valid" class="help-block">password is required</div>
+        </div>
+        
+        <div class="text-center">
+          <button class="btn btn-primary">Signup</button>
+          <a [routerLink]="['/']">Cancle</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->

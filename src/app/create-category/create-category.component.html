@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 mt-8">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && createCategory()" novalidate>
+        <div *ngIf="successAlert" class="alert alert-success  text-center">
+          {{alertMessage}}
+        </div>
+        <div *ngIf="errorAlert" class="alert alert-info text-center">
+          {{alertMessage}}
+        </div>
+        <div *ngIf="existAlert" class="alert alert-info text-center">
+            {{alertMessage}}
+          </div>
+        
+        <div class="form-group col-md-12" [ngClass]="{'has-error':f.submitted &&!name.valid}">
+          <label>name</label>
+          <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" required>
+          <div *ngIf="f.submitted && !name.valid" class="help-block">name is required</div>
+        </div>
+        <div class="form-group col-md-12" [ngClass]="{'has-error':f.submitted &&!type.valid}">
+          <label>Type </label>
+          <select class="form-control" name="type" [(ngModel)]="model.type" #type="ngModel" required>
+            <option value="">Please select a type</option>
+            <option *ngFor="let type of types" [value]="type">{{type}}
+            </option>
+          </select>
+          <div *ngIf="f.submitted && !type.valid" class="help-block">type is required</div>
+          
+          <div class="form-group mt-20">
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <a [routerLink]="['/categories']"> Show Categories</a>
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
