@@ -25,7 +25,8 @@ export class AuthorsComponent implements OnInit {
           this.error = this.response.message;
         }
         if (this.response.data.lenght === 0) {
-          this.error = 'Author not found';
+          console.log('-------404----------');
+          this.error = 'Authors Not Available';
         }
         if (this.response.statusCode === 200) {
           this.authors = this.response.data;
@@ -34,7 +35,7 @@ export class AuthorsComponent implements OnInit {
       )
       .catch(error => this.error = error);
   }
-  
+
   deleteAuthorById(id: string) {
     this.authorsService.deleteAuthorById(id)
       .then(response => {
