@@ -25,6 +25,9 @@ import { CreateAuthorComponent } from './create-author/create-author.component';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { UpdateAuthorComponent } from './update-author/update-author.component';
+import { UpdateBlogComponent } from './update-blog/update-blog.component';
+import { FileSelectDirective } from 'ng2-file-upload';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const appRoutes: Routes = [
   {
@@ -56,6 +59,10 @@ const appRoutes: Routes = [
   {
     path: 'updateAuthor/:id',
     component: UpdateAuthorComponent
+  },
+  {
+    path: 'updateBlog/:id',
+    component: UpdateBlogComponent
   },
   {
     path: 'authors',
@@ -101,7 +108,10 @@ export const AppRoutes = RouterModule.forRoot(appRoutes, { initialNavigation: fa
     CreateBlogComponent,
     CreateAuthorComponent,
     UpdateCategoryComponent,
-    UpdateAuthorComponent
+    UpdateAuthorComponent,
+    UpdateBlogComponent,
+    FileSelectDirective,
+    UserProfileComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

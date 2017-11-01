@@ -1,17 +1,25 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<ol class = "breadcrumb">
-				<li><a routerLink="/dashboard">Dashboard</a></li>
-				<li class = "active">Categories</li>
+			<ol class="breadcrumb">
+				<li>
+					<a routerLink="/dashboard">Dashboard</a>
+				</li>
+				<li class="active">Categories</li>
 			</ol>
 		</div>
-		
+
 		<div class="col-md-10 col-md-offset-1">
+			<div *ngIf="successAlert" class="alert alert-success  text-center col-md-8 col-md-offset-2">
+				{{alertMessage}}
+			</div>
+			<div *ngIf="errorAlert" class="alert alert-info text-center col-md-8 col-md-offset-2">
+				{{alertMessage}}
+			</div>
 			<div class="text-right">
 				<button class="btn btn-primary" [routerLink]="['/createBlog']">Create Blog</button>
 			</div>
-			<table class = "table table-bordered">
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -25,22 +33,27 @@
 
 				<tbody>
 					<tr *ngFor="let blog of blogs">
-						
-						<td><a routerLink="">{{blog.name}}</a></td>
+
+						<td>
+							<a routerLink="">{{blog.name}}</a>
+						</td>
 						<td>{{blog.title}}</td>
 						<td>{{blog.subtitle}}</td>
 						<td>{{blog.content}}</td>
 						<td>{{blog.createdAt}}</td>
-						
+
 						<td>
-							<a href="" class="btn btn-danger">Delete</a>
-							<a href="" class="btn btn-primary">Edit</a>
+							<button class="btn btn-danger" (click)="deleteBlogById(blog._id)">Delete</button>
+							<a href="" class="btn btn-primary" [routerLink]="['/updateBlog',blog._id]">Edit</a>
 						</td>
 					</tr>
 
 				</tbody>
 
 			</table>
+			<div *ngIf="notFoundAlert" class="alert alert-info text-center col-md-8 col-md-offset-2">
+					{{notFoundError}}
+				</div>
 		</div>
 	</div>
 </div>

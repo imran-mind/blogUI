@@ -20,7 +20,7 @@ export class BlogsService {
 	  fetching blogs from server
 	*/
 	/*getBlogs():Observable<Blog[]>{
-		return this.http.get(this.httpUrl)
+		return this.http.get(this.httpUrl)httpUrl
 		.map(this.extractData)
 		.catch(this.handleError);
 	}*/
@@ -40,7 +40,37 @@ export class BlogsService {
 			.then(res => res.json())
 			.catch(this.handleError);
 	}
+	getblogById(id:string):Promise<any>{
+		let authToken=localStorage.getItem('token');
+		let headers=new Headers({'Accept':'application/json'});
+		headers.append('Authorization',authToken);
+		let options=new RequestOptions({headers:headers});
+		return this.http.get(this.httpUrl +'/'+ id,options)
+		.toPromise()
+		.then(res=>res.json())
+		.catch(this.handleError);
+	}
+	updateBlog(id:string,blogInfo:any):Promise<any>{
+		let authToken=localStorage.getItem('token');
+		let headers=new Headers({'Accept':'application/json'});
+		headers.append('Authorization',authToken);
+		let options=new RequestOptions({headers:headers});
+		return this.http.put(this.httpUrl+'/'+ id,blogInfo,options)
+		.toPromise()
+		.then(res=>res.json())
+		.catch(this.handleError);
 
+	}
+	deleteBlogById(id:string):Promise<any>{
+		let authToken=localStorage.getItem('token');
+		let headers =new Headers({'Accept':'application/json'});
+		headers.append('Authorization',authToken);
+		let options=new RequestOptions({headers:headers});
+		return this.http.delete(this.httpUrl+'/'+id,options)
+		.toPromise()
+		.then(res=>res.json())
+		.catch(this.handleError);
+	}
 
 	private extractData(res: Response) {
 		let body = res.json();

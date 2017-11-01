@@ -47,6 +47,9 @@
 				</tbody>
 
 			</table>
+			<div *ngIf="notFoundAlert" class="alert alert-info text-center col-md-8 col-md-offset-2">
+					{{notFoundError}}
+				</div>
 		</div>
 	</div>
 </div>

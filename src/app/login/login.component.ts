@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   errorMessage: String;
   customResponse: CustomResponse;
   login: any = {};
+  errorAlert: Boolean = false;
+  unauthorizeUser: any;
 
   constructor(private router: Router, private loginService: LoginService) { }
 
@@ -26,9 +28,13 @@ export class LoginComponent implements OnInit {
     this.loginService.userLogin(this.login)
       .subscribe(res => {
         this.customResponse = <any>res;
+        console.log(this.customResponse);
         if (this.customResponse) {
           if (this.customResponse.statusCode === 401) {
+            console.log('..........invalid........');
             this.router.navigate(['/']);
+            this.errorAlert = true;
+            this.unauthorizeUser = "invalid user name or pasword";
           }
           if (this.customResponse.statusCode === 200) {
             localStorage.setItem('token', 'Bearer ' + this.customResponse.token);
@@ -41,7 +47,10 @@ export class LoginComponent implements OnInit {
           }
         }
       },
-      error => this.errorMessage = <any>error);
+      error => {
+        this.errorMessage = <any>error
+        console.log('------------------------caught error-------------------', JSON.stringify(this.errorMessage));
+      });
   }
 }
 

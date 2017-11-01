@@ -12,6 +12,8 @@ export class AuthorsComponent implements OnInit {
   model: any = {};
   error: any;
   serverResponse: any;
+  notFoundAlert: Boolean = false;
+  notFoundError: any;
   successAlert: Boolean = false;
   errorAlert: Boolean = false;
   alertMessage: string;
@@ -24,9 +26,11 @@ export class AuthorsComponent implements OnInit {
         if (this.response.statusCode !== 200) {
           this.error = this.response.message;
         }
-        if (this.response.data.lenght === 0) {
+        if (this.response.data.length === 0) {
           console.log('-------404----------');
           this.error = 'Authors Not Available';
+          this.notFoundAlert=true;
+          this.notFoundError="not found author";
         }
         if (this.response.statusCode === 200) {
           this.authors = this.response.data;
